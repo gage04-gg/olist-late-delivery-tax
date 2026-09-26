@@ -8,3 +8,4 @@ rddensity
 matplotlib
 jupyter
 kaggle
+tabulate
