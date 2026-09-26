@@ -1,0 +1,4 @@
+delivery_status,n_orders,avg_review_score,low_review_pct
+1_early,88163,4.294,9.22
+2_on_time,1280,4.034,12.42
+3_late,6381,2.271,62.40
