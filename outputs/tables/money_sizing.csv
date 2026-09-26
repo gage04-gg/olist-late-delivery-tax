@@ -1,0 +1,16 @@
+item,value,source_or_assumption
+Delivered orders,96470.0,"fct_orders, is_delivered = 1, full period"
+Late orders,6534.0,days_late >= 1
+Late-order share (%),6.77,late / delivered
+GMV of late orders (R$),985924.0,sum of item price of late orders
+Late GMV share (%),7.46,late GMV / delivered GMV
+Causal effect of late on P(review <= 2),0.5186,Test 2 seller FE (pre-registered choice)
+Extra low reviews caused by lateness,3389.0,late orders x Test 2 effect
+"Extra low reviews, 95% CI low",3297.0,late orders x CI low
+"Extra low reviews, 95% CI high",3480.0,late orders x CI high
+Extra low reviews using RDD effect (check),12.0,late orders x Test 1 RDD effect (local to the cutoff)
+Share of all low reviews caused by lateness (%),27.6,extra low reviews / all low reviews on delivered orders
+Test 3 effect on repurchase_180,-0.0032,"NOT statistically significant: shown only as a range, not counted in the total"
+Avg 180-day GMV of a returning customer (R$),136.44,"repeat orders within 180 days, Test 3 sample"
+"Lost repeat GMV range, low (R$)",-583.0,late first orders x -CI high x avg repeat GMV
+"Lost repeat GMV range, high (R$)",3793.0,late first orders x -CI low x avg repeat GMV
