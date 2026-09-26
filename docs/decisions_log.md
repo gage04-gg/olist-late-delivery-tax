@@ -12,7 +12,12 @@ Every judgement call, with the date and the reason.
 | 2026-09-26 | Trend charts cover Jan 2017 – Aug 2018 only | 2016 months and Sep–Oct 2018 are partial or near-empty |
 | 2026-09-26 | Orders with a carrier date before purchase (166) or a customer date before the carrier date (23) are kept | These fields aren't used in `days_late` or the causal models |
 
-## Open questions (decide before `analysis_plan.md` is committed)
-
-1. **log(freight) with zero freight.** 383 items have `freight_value = 0`. Options: `log(1 + freight)`, or drop those orders. It must be fixed in the plan before any regression.
-2. **"Review created after delivery" for the mechanism check.** `review_creation_date` has no time (always 00:00). Options: compare dates (`review_date > delivered_date`, or `>=`). It must be fixed in the plan.
+| 2026-09-26 | GMV = sum of item price for orders not canceled/unavailable (freight excluded) | Standard marketplace definition; freight is a pass-through cost |
+| 2026-09-26 | Main item = most expensive item in the order; it defines `main_category` and `main_seller_id` (used for distance) | An order has one category and one distance in the models; 1.3% of orders have several sellers |
+| 2026-09-26 | Order weight = sum of product weights | Heavier baskets ship slower; the sum matches the whole parcel |
+| 2026-09-26 | `log_freight = ln(1 + freight)` | 383 items have freight = 0; this keeps them instead of dropping them. Fixed before any regression |
+| 2026-09-26 | Mechanism check uses `review_answer_timestamp > order_delivered_customer_date` | `review_creation_date` has no time of day, but the answer timestamp does, so this is the cleanest "answered after receiving" rule. Fixed before any regression |
+| 2026-09-26 | Repurchase = another valid order on a later calendar day, within 180 days | Same-day orders are usually one basket split into several orders |
+| 2026-09-26 | Test 3 base rate is 2.0%, not the ~3% assumed in my project brief | q04's 3.04% counts any repeat over the whole period; the 180-day window with same-day orders excluded is lower. MDE recomputed in the plan |
+| 2026-09-26 | Money sizing uses the Test 2 β on `low_review`; the RDD is shown as a check | The RDD is local to orders just past the promise; money sizing needs the average effect over all late orders |
+| 2026-09-26 | Before writing the plan, a descriptive table of average review by `days_late` (−3 … 4) was viewed as a sanity check of `fct_orders` | Disclosed for transparency; no regression had been run |
