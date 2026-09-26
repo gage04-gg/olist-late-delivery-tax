@@ -1,0 +1,9 @@
+data/raw/
+.venv/
+*.env
+.env
+__pycache__/
+.ipynb_checkpoints/
+.DS_Store
+kaggle.json
+access_token

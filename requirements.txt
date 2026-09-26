@@ -1,0 +1,10 @@
+pandas
+numpy
+sqlalchemy
+psycopg[binary]
+pyfixest
+rdrobust
+rddensity
+matplotlib
+jupyter
+kaggle
