@@ -1,4 +1,4 @@
-# The Late-Delivery Tax
+# E-Commerce Delivery Analysis: Measuring How Late Deliveries Drive Bad Customer Reviews Across 99k Orders
 
 In this project I looked at what happens when an online order arrives later than the date the customer was promised. I used the Olist dataset, a **public dataset from Kaggle** with about 99,000 orders from a Brazilian online marketplace (2016–2018). This is my own practice project. It is not work for any company.
 
